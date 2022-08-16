@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import About from '../pages/About';
 
-describe('Teste App', () => {
+describe('Teste About', () => {
   it('se tem um elemento h2 com o texto About Pokédex', async () => {
     render(<About />);
     const about = screen.getByRole('heading', { level: 2, name: /About Pokédex/i });
