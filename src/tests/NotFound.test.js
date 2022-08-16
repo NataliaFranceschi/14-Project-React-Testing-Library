@@ -5,9 +5,9 @@ import NotFound from '../pages/NotFound';
 describe('Teste NotFound', () => {
   it('se tem um elemento h2 com o texto Page requested not found', async () => {
     render(<NotFound />);
-    const about = screen.getByRole('heading', { level: 2,
+    const pageNotFound = screen.getByRole('heading', { level: 2,
       name: /Page requested not found/i });
-    expect(about).toBeInTheDocument();
+    expect(pageNotFound).toBeInTheDocument();
   });
   it('se utiliza o src correto', async () => {
     render(<NotFound />);
