@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import About from '../pages/About';
 
 describe('Teste App', () => {
-  it('sse tem um elemento h1 com o texto About Pokédex', async () => {
+  it('se tem um elemento h2 com o texto About Pokédex', async () => {
     render(<About />);
     const about = screen.getByRole('heading', { level: 2, name: /About Pokédex/i });
     expect(about).toBeInTheDocument();
