@@ -13,24 +13,28 @@ describe('Teste App', () => {
       expect(elementLink).toBeInTheDocument();
     });
   });
+
   it('se o link Home redireciona para pagina inicial', () => {
     const { history } = renderWithRouter(<App />);
     const homeLink = screen.getByRole('link', { name: /Home/i });
     userEvent.click(homeLink);
     expect(history.location.pathname).toBe('/');
   });
+
   it('se o link About redireciona para about', () => {
     const { history } = renderWithRouter(<App />);
     const aboutLink = screen.getByRole('link', { name: /About/i });
     userEvent.click(aboutLink);
     expect(history.location.pathname).toBe('/about');
   });
+
   it('se o link Pokémons Favoritados redireciona para favorites', () => {
     const { history } = renderWithRouter(<App />);
     const favoritesLink = screen.getByRole('link', { name: /Favorite pokémons/i });
     userEvent.click(favoritesLink);
     expect(history.location.pathname).toBe('/favorites');
   });
+
   it('se url desconhecida redireciona para pagina NotFound', () => {
     const { history } = renderWithRouter(<App />);
     history.push('/teste');

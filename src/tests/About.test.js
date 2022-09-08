@@ -8,6 +8,7 @@ describe('Teste About', () => {
     const about = screen.getByRole('heading', { level: 2, name: /About Pokédex/i });
     expect(about).toBeInTheDocument();
   });
+
   it('se tem dois paragrafos', () => {
     render(<About />);
     const p1 = screen.getByText(/This application/i);
@@ -15,6 +16,7 @@ describe('Teste About', () => {
     const p2 = screen.getByText(/filter Pokémons/i);
     expect(p2).toBeInTheDocument();
   });
+
   it('se utiliza o src correto', async () => {
     render(<About />);
     const url = 'https://cdn2.bulbagarden.net/upload/thumb/8/86/Gen_I_Pok%C3%A9dex.png/800px-Gen_I_Pok%C3%A9dex.png';

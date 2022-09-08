@@ -11,11 +11,13 @@ describe('Teste Pokedex', () => {
       name: /Encountered pokémons/i });
     expect(title).toBeInTheDocument();
   });
+
   it('se aparece apenas um pokemon por vez', () => {
     renderWithRouter(<App />);
     const pokemon = screen.getAllByText(/More details/i);
     expect(pokemon.length).toBe(1);
   });
+
   it('se quando clicado no botão all não há separação por tipo', async () => {
     renderWithRouter(<App />);
     const buttonAll = screen.getByRole('button', { name: /All/i });
@@ -27,6 +29,7 @@ describe('Teste Pokedex', () => {
     const charmander = await screen.findByTestId('pokemon-type', { name: /Fire/i });
     expect(charmander).toBeInTheDocument();
   });
+
   it('testa se tem um botão para cada tipo de pokemon', () => {
     renderWithRouter(<App />);
     const type = ['Electric', 'Fire', 'Bug',

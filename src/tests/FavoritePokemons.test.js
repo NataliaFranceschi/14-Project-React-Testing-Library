@@ -9,6 +9,7 @@ describe('Teste FavoritePokemon', () => {
     const mensagem = screen.getByText(/No favorite pokemon found/i);
     expect(mensagem).toBeInTheDocument();
   });
+
   it('se são exibidos todos os cards de pokémons favoritados', () => {
     const pokemons = [{ id: 25,
       name: 'Pikachu',

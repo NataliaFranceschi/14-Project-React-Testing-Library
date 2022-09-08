@@ -9,6 +9,7 @@ describe('Teste NotFound', () => {
       name: /Page requested not found/i });
     expect(pageNotFound).toBeInTheDocument();
   });
+
   it('se utiliza o src correto', () => {
     render(<NotFound />);
     const url = 'https://media.giphy.com/media/kNSeTs31XBZ3G/giphy.gif';

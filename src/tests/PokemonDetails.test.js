@@ -5,22 +5,24 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 
 describe('Teste PokemonDetails', () => {
-  it('se informações do pokemon selecionado são mostradas', () => {
+  beforeEach(() => {
     renderWithRouter(<App />);
     const moreDetail = screen.queryByRole('link', { name: /more Detail/i });
     userEvent.click(moreDetail);
+  });
+
+  it('se informações do pokemon selecionado são mostradas', () => {
     const name = screen.getByText(/Pikachu Details/i);
     expect(name).toBeInTheDocument();
+    const moreDetail = screen.queryByRole('link', { name: /more Detail/i });
     expect(moreDetail).not.toBeInTheDocument();
     const text = screen.getByRole('heading', { level: 2, name: /Summary/i });
     expect(text).toBeInTheDocument();
     const pokemonDetail = screen.getByText(/roasts hard berries with electricity/i);
     expect(pokemonDetail).toBeInTheDocument();
   });
+
   it('se informações sobre as localizações do pokemon são mostradas', () => {
-    renderWithRouter(<App />);
-    const moreDetail = screen.queryByRole('link', { name: /more Detail/i });
-    userEvent.click(moreDetail);
     const textLocation = screen.getByRole('heading', { level: 2,
       name: 'Game Locations of Pikachu' });
     expect(textLocation).toBeInTheDocument();
@@ -39,11 +41,9 @@ describe('Teste PokemonDetails', () => {
       expect(img[index]).toHaveAttribute('src', map);
     });
   });
+
   it('se tem um checkbox que da para favoritar', () => {
-    renderWithRouter(<App />);
-    const moreDetail = screen.queryByRole('link', { name: /more Detail/i });
-    userEvent.click(moreDetail);
-    const checkbox = screen.getByLabelText(/Pokémon favoritado?/i);
+    const checkbox = screen.getByLabelText(/Pokémon favoritado/i);
     expect(checkbox).toBeInTheDocument();
     expect(checkbox.checked).toBe(false);
     userEvent.click(checkbox);

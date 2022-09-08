@@ -27,12 +27,14 @@ describe('Teste Pokemon', () => {
     const url = 'https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png';
     expect(pokemonImage).toHaveAttribute('src', url);
   });
+
   it('se é renderizado um card com as informações de determinado pokémon', () => {
     const { history } = renderWithRouter(<Pokemon pokemon={ pokemon } isFavorite />);
     const moreDetailsLink = screen.getByRole('link', { name: /more details/i });
     userEvent.click(moreDetailsLink);
     expect(history.location.pathname).toBe('/pokemons/25');
   });
+
   it('se existe um ícone de estrela nos pokémons favoritados ', () => {
     renderWithRouter(<Pokemon pokemon={ pokemon } isFavorite />);
     const src = '/star-icon.svg';
